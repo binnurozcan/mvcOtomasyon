@@ -1,0 +1,28 @@
+﻿@model MvcOtomasyon.Models.Entity.MUSTERILER
+@{
+    ViewBag.Title = "MusteriGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Musteri", FormMethod.Post)) // ilk satirlarda sadece verilmek istenen baslik da yazilabilir bu sekilde veritabanindaki isim gosteriliyor
+{
+    <div class="container">
+        <div class="form-group">
+            @Html.LabelFor(m => m.MUSTERIID)
+            @Html.TextBoxFor(m => m.MUSTERIID)
+            <br /><br />
+            @Html.LabelFor(m => m.MUSTERIAD)
+            @Html.TextBoxFor(m => m.MUSTERIAD)
+            <br /><br />
+            @Html.LabelFor(m => m.MUSTERISOYAD)
+            @Html.TextBoxFor(m => m.MUSTERISOYAD)
+            <br /><br />
+            @Html.LabelFor(m => m.MUSTERITELNO)
+            @Html.TextBoxFor(m => m.MUSTERITELNO)
+        </div>
+        <div>
+            <button class="btn add-new">MUSTERI GUNCELLE</button>
+        </div>
+
+    </div>
+}

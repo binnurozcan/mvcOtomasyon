@@ -1,0 +1,36 @@
+﻿@using MvcOtomasyon.Models.Entity
+@model List<KAMPANYALAR>
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Kampanya ID</th>
+                <th>Kampanya Ad</th>
+                <th>Kampanya İndirim Oranı</th>
+                <th>Kampanya Açıklaması</th>
+                <th>SİL</th>
+                <th>GÜNCELLE</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var kmp in Model)
+            {
+                <tr>
+                    <td>@kmp.KAMPANYAID</td>
+                    <td>@kmp.KAMPANYAADI</td>
+                    <td>@kmp.INDIRIMORANI</td>
+                    <td>@kmp.KAMPANYAACIKLAMA</td>
+                    <td><a class="danger" href="/KAMPANYA/SIL/@kmp.KAMPANYAID">SİL</a></td>
+                    <td><a class="success" href="/KAMPANYA/GÜNCELLE/@kmp.KAMPANYAID">GÜNCELLE</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/KAMPANYA/YeniKampanya/" class="add-new">YENİ KAMPANYA EKLE</a>
+</div>
+

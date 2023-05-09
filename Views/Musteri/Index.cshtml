@@ -1,0 +1,37 @@
+﻿@using MvcOtomasyon.Models.Entity
+@model List <MUSTERILER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Musteri ID</th>
+                <th>Musteri Ad</th>
+                <th>Musteri Soyad</th>
+                <th>Musteri Tel.</th>
+                <th>SİL</th>
+                <th>GÜNCELLE</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var mus in Model)
+            {
+            <tr>
+                <td>@mus.MUSTERIID</td>
+                <td>@mus.MUSTERIAD</td>
+                <td>@mus.MUSTERISOYAD</td>
+                <td>@mus.MUSTERITELNO</td>
+                <td><a class="danger" href="/MUSTERI/SIL/@mus.MUSTERIID">SİL</a></td>
+                <td><a class="success" href="/MUSTERI/MusteriGetir/@mus.MUSTERIID">GÜNCELLE</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/MUSTERI/YeniMusteri/" class="add-new">YENİ MÜŞTERİ EKLE</a>
+</div>

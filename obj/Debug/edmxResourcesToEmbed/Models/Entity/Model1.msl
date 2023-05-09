@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="otomasyonModelStoreContainer" CdmEntityContainer="otomasyonEntities">
+    <EntitySetMapping Name="KAMPANYALAR">
+      <EntityTypeMapping TypeName="otomasyonModel.KAMPANYALAR">
+        <MappingFragment StoreEntitySet="KAMPANYALAR">
+          <ScalarProperty Name="KAMPANYAID" ColumnName="KAMPANYAID" />
+          <ScalarProperty Name="KAMPANYAADI" ColumnName="KAMPANYAADI" />
+          <ScalarProperty Name="INDIRIMORANI" ColumnName="INDIRIMORANI" />
+          <ScalarProperty Name="KAMPANYAACIKLAMA" ColumnName="KAMPANYAACIKLAMA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KATEGORILER">
+      <EntityTypeMapping TypeName="otomasyonModel.KATEGORILER">
+        <MappingFragment StoreEntitySet="KATEGORILER">
+          <ScalarProperty Name="KATEGORIID" ColumnName="KATEGORIID" />
+          <ScalarProperty Name="KATEGORIAD" ColumnName="KATEGORIAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MUSTERILER">
+      <EntityTypeMapping TypeName="otomasyonModel.MUSTERILER">
+        <MappingFragment StoreEntitySet="MUSTERILER">
+          <ScalarProperty Name="MUSTERIID" ColumnName="MUSTERIID" />
+          <ScalarProperty Name="MUSTERIAD" ColumnName="MUSTERIAD" />
+          <ScalarProperty Name="MUSTERISOYAD" ColumnName="MUSTERISOYAD" />
+          <ScalarProperty Name="MUSTERITELNO" ColumnName="MUSTERITELNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SATIS">
+      <EntityTypeMapping TypeName="otomasyonModel.SATIS">
+        <MappingFragment StoreEntitySet="SATIS">
+          <ScalarProperty Name="SATISID" ColumnName="SATISID" />
+          <ScalarProperty Name="TOPLAMTUTAR" ColumnName="TOPLAMTUTAR" />
+          <ScalarProperty Name="SATISTARIH" ColumnName="SATISTARIH" />
+          <ScalarProperty Name="MUSTERIID" ColumnName="MUSTERIID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SATISDETAY">
+      <EntityTypeMapping TypeName="otomasyonModel.SATISDETAY">
+        <MappingFragment StoreEntitySet="SATISDETAY">
+          <ScalarProperty Name="SATISDETAYID" ColumnName="SATISDETAYID" />
+          <ScalarProperty Name="SATISID" ColumnName="SATISID" />
+          <ScalarProperty Name="URUNID" ColumnName="URUNID" />
+          <ScalarProperty Name="ADET" ColumnName="ADET" />
+          <ScalarProperty Name="BIRIMFIYAT" ColumnName="BIRIMFIYAT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="otomasyonModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="URUNLER">
+      <EntityTypeMapping TypeName="otomasyonModel.URUNLER">
+        <MappingFragment StoreEntitySet="URUNLER">
+          <ScalarProperty Name="URUNID" ColumnName="URUNID" />
+          <ScalarProperty Name="KATEGORIID" ColumnName="KATEGORIID" />
+          <ScalarProperty Name="KAMPANYAID" ColumnName="KAMPANYAID" />
+          <ScalarProperty Name="URUNMARKA" ColumnName="URUNMARKA" />
+          <ScalarProperty Name="URUNMODEL" ColumnName="URUNMODEL" />
+          <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+          <ScalarProperty Name="STOK" ColumnName="STOK" />
+          <ScalarProperty Name="URUNAD" ColumnName="URUNAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

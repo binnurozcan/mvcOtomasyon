@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="otomasyonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="KAMPANYALAR">
+    <Key>
+      <PropertyRef Name="KAMPANYAID" />
+    </Key>
+    <Property Name="KAMPANYAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KAMPANYAADI" Type="varchar" MaxLength="50" />
+    <Property Name="INDIRIMORANI" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="KAMPANYAACIKLAMA" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="KATEGORILER">
+    <Key>
+      <PropertyRef Name="KATEGORIID" />
+    </Key>
+    <Property Name="KATEGORIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KATEGORIAD" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MUSTERILER">
+    <Key>
+      <PropertyRef Name="MUSTERIID" />
+    </Key>
+    <Property Name="MUSTERIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MUSTERIAD" Type="varchar" MaxLength="50" />
+    <Property Name="MUSTERISOYAD" Type="varchar" MaxLength="50" />
+    <Property Name="MUSTERITELNO" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="SATIS">
+    <Key>
+      <PropertyRef Name="SATISID" />
+    </Key>
+    <Property Name="SATISID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TOPLAMTUTAR" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SATISTARIH" Type="date" />
+    <Property Name="MUSTERIID" Type="int" />
+  </EntityType>
+  <EntityType Name="SATISDETAY">
+    <Key>
+      <PropertyRef Name="SATISDETAYID" />
+    </Key>
+    <Property Name="SATISDETAYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SATISID" Type="int" />
+    <Property Name="URUNID" Type="int" />
+    <Property Name="ADET" Type="int" />
+    <Property Name="BIRIMFIYAT" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="URUNLER">
+    <Key>
+      <PropertyRef Name="URUNID" />
+    </Key>
+    <Property Name="URUNID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KATEGORIID" Type="int" />
+    <Property Name="KAMPANYAID" Type="int" />
+    <Property Name="URUNMARKA" Type="varchar" MaxLength="50" />
+    <Property Name="URUNMODEL" Type="varchar" MaxLength="50" />
+    <Property Name="FIYAT" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="STOK" Type="int" />
+    <Property Name="URUNAD" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_URUNLER_KAMPANYALAR">
+    <End Role="KAMPANYALAR" Type="Self.KAMPANYALAR" Multiplicity="0..1" />
+    <End Role="URUNLER" Type="Self.URUNLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KAMPANYALAR">
+        <PropertyRef Name="KAMPANYAID" />
+      </Principal>
+      <Dependent Role="URUNLER">
+        <PropertyRef Name="KAMPANYAID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KATEGORIID">
+    <End Role="KATEGORILER" Type="Self.KATEGORILER" Multiplicity="0..1" />
+    <End Role="URUNLER" Type="Self.URUNLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KATEGORILER">
+        <PropertyRef Name="KATEGORIID" />
+      </Principal>
+      <Dependent Role="URUNLER">
+        <PropertyRef Name="KATEGORIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MUSTERIID">
+    <End Role="MUSTERILER" Type="Self.MUSTERILER" Multiplicity="0..1" />
+    <End Role="SATIS" Type="Self.SATIS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MUSTERILER">
+        <PropertyRef Name="MUSTERIID" />
+      </Principal>
+      <Dependent Role="SATIS">
+        <PropertyRef Name="MUSTERIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SATISID">
+    <End Role="SATIS" Type="Self.SATIS" Multiplicity="0..1" />
+    <End Role="SATISDETAY" Type="Self.SATISDETAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SATIS">
+        <PropertyRef Name="SATISID" />
+      </Principal>
+      <Dependent Role="SATISDETAY">
+        <PropertyRef Name="SATISID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="URUNID">
+    <End Role="URUNLER" Type="Self.URUNLER" Multiplicity="0..1" />
+    <End Role="SATISDETAY" Type="Self.SATISDETAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="URUNLER">
+        <PropertyRef Name="URUNID" />
+      </Principal>
+      <Dependent Role="SATISDETAY">
+        <PropertyRef Name="URUNID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="otomasyonModelStoreContainer">
+    <EntitySet Name="KAMPANYALAR" EntityType="Self.KAMPANYALAR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KATEGORILER" EntityType="Self.KATEGORILER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MUSTERILER" EntityType="Self.MUSTERILER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SATIS" EntityType="Self.SATIS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SATISDETAY" EntityType="Self.SATISDETAY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="URUNLER" EntityType="Self.URUNLER" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_URUNLER_KAMPANYALAR" Association="Self.FK_URUNLER_KAMPANYALAR">
+      <End Role="KAMPANYALAR" EntitySet="KAMPANYALAR" />
+      <End Role="URUNLER" EntitySet="URUNLER" />
+    </AssociationSet>
+    <AssociationSet Name="KATEGORIID" Association="Self.KATEGORIID">
+      <End Role="KATEGORILER" EntitySet="KATEGORILER" />
+      <End Role="URUNLER" EntitySet="URUNLER" />
+    </AssociationSet>
+    <AssociationSet Name="MUSTERIID" Association="Self.MUSTERIID">
+      <End Role="MUSTERILER" EntitySet="MUSTERILER" />
+      <End Role="SATIS" EntitySet="SATIS" />
+    </AssociationSet>
+    <AssociationSet Name="SATISID" Association="Self.SATISID">
+      <End Role="SATIS" EntitySet="SATIS" />
+      <End Role="SATISDETAY" EntitySet="SATISDETAY" />
+    </AssociationSet>
+    <AssociationSet Name="URUNID" Association="Self.URUNID">
+      <End Role="URUNLER" EntitySet="URUNLER" />
+      <End Role="SATISDETAY" EntitySet="SATISDETAY" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

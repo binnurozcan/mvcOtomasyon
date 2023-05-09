@@ -1,0 +1,39 @@
+﻿@model MvcOtomasyon.Models.Entity.URUNLER
+@using System.Linq
+@{
+    ViewBag.Title = "YeniUrun";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="container">
+    <form class="form-group" method="post">
+        <div>
+            <label>Ürün Kategori Seçiniz</label>
+            @Html.DropDownListFor(m => m.KATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+        </div>
+        <div>
+            <label>Ürün Marka</label>
+            <input type="text" class="form-control" name="URUNMARKA" />
+        </div>
+        <div>
+            <label>Ürün Model</label>
+            <input type="text" class="form-control" name="URUNMODEL" />
+        </div>
+        <div>
+            <label>Ürün Fiyat</label>
+            <input type="text" class="form-control" name="FIYAT" />
+        </div>
+        <div>
+            <label>Ürün Stok Adet</label>
+            <input type="text" class="form-control" name="STOK" />
+        </div>
+        <div>
+            <label>Ürün Açıklama</label>
+            <input type="text" class="form-control" name="URUNAD" />
+        </div>
+        <div style="margin-top:15px">
+            <button class="success btn">KATEGORİ EKLE</button>
+        </div>
+
+    </form>
+</div>
+

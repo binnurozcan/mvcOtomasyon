@@ -1,0 +1,23 @@
+﻿@model MvcOtomasyon.Models.Entity.KATEGORILER
+@{
+    ViewBag.Title = "KategoriGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Kategori", FormMethod.Post)) // bu form ne zaman calisacak
+{
+    <div class="container">
+        <div class="form-group">
+            @Html.LabelFor(m => m.KATEGORIID)
+            @Html.TextBoxFor(m => m.KATEGORIID)
+            <br /><br />
+            @Html.LabelFor(m => m.KATEGORIID)
+            @Html.TextBoxFor(m => m.KATEGORIAD)
+        </div>
+        <div>
+            <button class="btn add-new">KATEGORI GUNCELLE</button>
+        </div>
+        
+    </div>
+
+}

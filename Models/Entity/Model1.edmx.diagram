@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9882895006dd40e48a08869604936098" Name="Diagram1">
+        <EntityTypeShape EntityType="otomasyonModel.KAMPANYALAR" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="otomasyonModel.KATEGORILER" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="otomasyonModel.MUSTERILER" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="otomasyonModel.SATIS" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="otomasyonModel.SATISDETAY" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="otomasyonModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="otomasyonModel.URUNLER" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="otomasyonModel.FK_URUNLER_KAMPANYALAR" ManuallyRouted="false" />
+        <AssociationConnector Association="otomasyonModel.KATEGORIID" ManuallyRouted="false" />
+        <AssociationConnector Association="otomasyonModel.MUSTERIID" ManuallyRouted="false" />
+        <AssociationConnector Association="otomasyonModel.SATISID" ManuallyRouted="false" />
+        <AssociationConnector Association="otomasyonModel.URUNID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

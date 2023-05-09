@@ -1,0 +1,110 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sol Menü</title>
+    <style>
+       
+    table {
+        width: 120%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .danger {
+        background-color: #dc3545;
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    .success {
+        background-color: #28a745;
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    .add-new {
+        display: block;
+        width: 200px;
+        margin: 20px auto;
+        background-color: #28a745;
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+        .container {
+            width: 80%;
+            margin: 100px auto 0; /* yukarıdan 100px boşluk */
+            padding-left: 20%;
+            box-sizing: border-box;
+        }
+        /* Sol Menü Stil Özellikleri */
+        .menu {
+            position: fixed; /* Menüyü sabit tut */
+            width: 20%;
+            top: 0;
+            /* top: 100px;  yukarıdan 100px boşluk bırak */
+            left: 0; /* sol tarafa hizala */
+            background-color: #f1f1f1;
+            height: 100%;
+            overflow: auto; /* uzun menüler için kaydırma özelliği */
+        box-sizing: border-box;
+            }
+
+            .menu a {
+                display: block; /* Yatay yerine dikey görünüm */
+                padding: 12px; /* dolgu */
+                text-decoration: none; /* Çerçeve yok */
+                color: #000; /* Menü öğeleri yazı rengi */
+                font-size: 16px;
+                font-weight: bold;
+                transition: background-color 0.3s; /* Geçiş efekti */
+            }
+
+                .menu a:hover {
+                    background-color: #555; /* Mouse üzerine geldiğinde arkaplan rengi */
+                    color: #fff; /* Mouse üzerine geldiğinde yazı rengi */
+                }
+
+              
+    </style>
+</head>
+<body>
+
+    <div class="menu">
+        <a href="#">Ana Sayfa</a>
+        <a href="/Kategori/Index">Kategoriler</a>
+        <a href="/Urun/Index">Ürünler</a>
+        <a href="/Musteri/Index">Müşteriler</a>
+        <a href="#">Satışlar</a>
+        <a href="/Kampanya/Index">Kampanyalar</a>
+        <a href="#">Yardım</a>
+    </div>
+
+    <div>
+        @RenderBody();
+    </div>
+
+</body>
+</html>

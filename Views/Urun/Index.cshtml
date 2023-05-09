@@ -1,0 +1,45 @@
+﻿@using MvcOtomasyon.Models.Entity
+@model List<URUNLER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>ÜRÜN ID</th>
+                <th>ÜRÜN KATEGORİ</th>
+                <th>ÜRÜN MARKA</th>
+                <th>ÜRÜN MODEL</th>
+                <th>ÜRÜN AÇIKLAMA</th>
+                <th>ÜRÜN FİYAT</th>
+                <th>ÜRÜN STOK</th>
+                <th>SİL</th>
+                <th>GÜNCELLE</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var urn in Model)
+            {
+                <tr>
+                    <td>@urn.URUNID</td>
+                    <td>@if(urn.KATEGORILER != null) { @urn.KATEGORILER.KATEGORIAD }</td>
+                    <td>@urn.URUNMARKA</td>
+                    <td>@urn.URUNMODEL</td>
+                    <td>@urn.URUNAD</td>
+                    <td>@urn.FIYAT</td>
+                    <td>@urn.STOK</td>
+                    <td><a class="danger" href="/URUN/SIL/@urn.URUNID">SİL</a></td>
+                    <td><a class="success" href="/URUN/GÜNCELLE/@urn.URUNID">GÜNCELLE</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/URUN/YeniUrun/" class="add-new">YENİ ÜRÜN EKLE</a>
+</div>
+
+
