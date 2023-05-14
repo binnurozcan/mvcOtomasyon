@@ -11,7 +11,8 @@ namespace MvcOtomasyon.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations; //uyarilar icin
+
     public partial class MUSTERILER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,13 @@ namespace MvcOtomasyon.Models.Entity
         }
     
         public int MUSTERIID { get; set; }
+
+        [Required(ErrorMessage = "MUSTERI ADINI GIRINIZ!")]
+        [StringLength(50,ErrorMessage ="EN FAZLA 50 KARAKTERLIK ISIM GIRINIZ!")]
+        
         public string MUSTERIAD { get; set; }
+
+        [Required(ErrorMessage = "MUSTERI SOYADINI GIRINIZ!")]
         public string MUSTERISOYAD { get; set; }
         public string MUSTERITELNO { get; set; }
     

@@ -1,26 +1,28 @@
-﻿
+﻿@model MvcOtomasyon.Models.Entity.MUSTERILER
 @{
     ViewBag.Title = "YeniMusteri";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-    <div class="container">
-        <form class="form-group" method="post">
-            <div>
-                <label>Müşteri Adı</label>
-                <input type="text" class="form-control" name="MUSTERIAD" />
-            </div>
-            <div>
-                <label>Müşteri Soydı</label>
-                <input type="text" class="form-control" name="MUSTERISOYAD" />
-            </div>
-            <div>
-                <label>Müşteri Tel.</label>
-                <input type="text" class="form-control" name="MUSTERITELNO" />
-            </div>
-            <div style="margin-top:15px">
-                <button class="success btn">MÜŞTERİ EKLE</button>
-            </div>
+<div class="container">
+    <form class="form-group" method="post">
+        <div>
+            <label>Müşteri Adı</label>
+            @Html.TextBoxFor(m => m.MUSTERIAD, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MUSTERIAD, "", new { @style = "color:red" })
+        </div>
+        <div>
+            <label>Müşteri Soydı</label>
+            @Html.TextBoxFor(m => m.MUSTERISOYAD, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MUSTERISOYAD, "", new { @style = "color:red" })
+        </div>
+        <div>
+            <label>Müşteri Tel.</label>
+            <input type="text" class="form-control" name="MUSTERITELNO" />
+        </div>
+        <div style="margin-top:15px">
+            <button class="success btn">MÜŞTERİ EKLE</button>
+        </div>
 
-        </form>
-    </div>
+    </form>
+</div>

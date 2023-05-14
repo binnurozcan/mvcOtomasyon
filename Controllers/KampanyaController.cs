@@ -24,6 +24,10 @@ namespace MvcOtomasyon.Controllers
         [HttpPost]
         public ActionResult YeniKampanya(KAMPANYALAR p1)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("YeniKampanya");
+            }
             db.KAMPANYALAR.Add(p1);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -35,6 +39,24 @@ namespace MvcOtomasyon.Controllers
             db.KAMPANYALAR.Remove(kampanya); //buldugunu urunlerden kaldir
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult KampanyaGetir(int id)
+        {
+            var kmp = db.KAMPANYALAR.Find(id);
+            return View("KampanyaGetir", kmp);
+        }
+
+        public ActionResult Guncelle(KAMPANYALAR p1)
+        {
+            var kampanya = db.KAMPANYALAR.Find(p1.KAMPANYAID);
+            kampanya.KAMPANYAADI = p1.KAMPANYAADI;
+            kampanya.KAMPANYAACIKLAMA = p1.KAMPANYAACIKLAMA;
+            kampanya.INDIRIMORANI = p1.INDIRIMORANI;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+
         }
     }
 }

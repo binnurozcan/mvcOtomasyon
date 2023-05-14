@@ -11,7 +11,7 @@ namespace MvcOtomasyon.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations; //uyarilar icin
 
     public partial class KATEGORILER
     {

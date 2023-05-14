@@ -1,0 +1,29 @@
+﻿@model MvcOtomasyon.Models.Entity.KAMPANYALAR
+@{
+    ViewBag.Title = "KampanyaGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Kampanya", FormMethod.Post)) // ilk satirlarda sadece verilmek istenen baslik da yazilabilir bu sekilde veritabanindaki isim gosteriliyor
+{
+    <div class="container">
+        <div class="form-group">
+            @Html.LabelFor(m => m.KAMPANYAID)
+            @Html.TextBoxFor(m => m.KAMPANYAID)
+            <br /><br />
+            @Html.LabelFor(m => m.KAMPANYAADI)
+            @Html.TextBoxFor(m => m.KAMPANYAADI)
+            <br /><br />
+            @Html.LabelFor(m => m.INDIRIMORANI)
+            @Html.TextBoxFor(m => m.INDIRIMORANI)
+            <br /><br />
+            @Html.LabelFor(m => m.KAMPANYAACIKLAMA)
+            @Html.TextBoxFor(m => m.KAMPANYAACIKLAMA)
+        </div>
+        <div>
+            <button class="btn add-new">KAMPANYA GUNCELLE</button>
+        </div>
+
+    </div>
+}
+

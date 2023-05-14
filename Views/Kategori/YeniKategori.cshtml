@@ -12,7 +12,7 @@
             <div>
                 <label>Kategori Adi</label>
                 @Html.TextBoxFor(m=>m.KATEGORIAD)
-                @Html.ValidationMessageFor(m=>m.KATEGORIAD)
+                @Html.ValidationMessageFor(m=>m.KATEGORIAD, "", new { @style = "color:red" } )
             </div>
             <div style="margin-top:15px">
                 <button class="success btn">KATEGORİ EKLE</button>

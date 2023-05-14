@@ -1,0 +1,42 @@
+﻿@model MvcOtomasyon.Models.Entity.URUNLER
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Guncelle", "Urun", FormMethod.Post)) // ilk satirlarda sadece verilmek istenen baslik da yazilabilir bu sekilde veritabanindaki isim gosteriliyor
+{
+    <div class="container">
+        <div class="form-group">
+            @Html.LabelFor(m => m.URUNID)
+            @Html.TextBoxFor(m => m.URUNID)
+            <br /><br />
+
+            @Html.LabelFor(m => m.URUNMARKA)
+            @Html.TextBoxFor(m => m.URUNMARKA)
+            <br /><br />
+            @Html.LabelFor(m => m.URUNMODEL)
+            @Html.TextBoxFor(m => m.URUNMODEL)
+            <br /><br />
+            @Html.LabelFor(m => m.FIYAT)
+            @Html.TextBoxFor(m => m.FIYAT)
+            <br /><br />
+            @Html.LabelFor(m => m.KATEGORIID)
+            @Html.DropDownListFor(m => m.KATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+            <br /><br />
+            @Html.LabelFor(m => m.URUNAD)
+            @Html.TextBoxFor(m => m.URUNAD)
+            <br /><br />
+
+
+            @Html.LabelFor(m => m.STOK)
+            @Html.TextBoxFor(m => m.STOK)
+        </div>
+        <div>
+            <button class="btn add-new">URUN GUNCELLE</button>
+        </div>
+
+    </div>
+}

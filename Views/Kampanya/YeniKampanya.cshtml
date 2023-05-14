@@ -1,4 +1,4 @@
-﻿
+﻿@model MvcOtomasyon.Models.Entity.KAMPANYALAR
 @{
     ViewBag.Title = "YeniKampanya";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -8,11 +8,13 @@
         <form class="form-group" method="post">
             <div>
                 <label>Kampanya Adı</label>
-                <input type="text" class="form-control" name="KAMPANYAADI" />
+                @Html.TextBoxFor(m => m.KAMPANYAADI, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.KAMPANYAADI, "", new { @style = "color:red" })
             </div>
             <div>
                 <label>indirim Oranı</label>
-                <input type="text" class="form-control" name="INDIRIMORANI" />
+                @Html.TextBoxFor(m => m.INDIRIMORANI, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.INDIRIMORANI, "", new { @style = "color:red" })
             </div>
             <div>
                 <label>Kampanya Açıklaması</label>

@@ -11,7 +11,8 @@ namespace MvcOtomasyon.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations; //uyarilar icin
+
     public partial class KAMPANYALAR
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,9 @@ namespace MvcOtomasyon.Models.Entity
         }
     
         public int KAMPANYAID { get; set; }
+        [Required(ErrorMessage = "KAMPANYA ADINI GIRINIZ!")]
         public string KAMPANYAADI { get; set; }
+        [Required(ErrorMessage = "INDIRIM ORANINI GIRINIZ!")]
         public Nullable<decimal> INDIRIMORANI { get; set; }
         public string KAMPANYAACIKLAMA { get; set; }
     

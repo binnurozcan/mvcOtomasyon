@@ -25,6 +25,10 @@ namespace MvcOtomasyon.Controllers
         [HttpPost]
         public ActionResult YeniMusteri(MUSTERILER p1)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("YeniMusteri");
+            }
             db.MUSTERILER.Add(p1);
             db.SaveChanges();
             return RedirectToAction("Index");
