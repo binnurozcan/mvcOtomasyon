@@ -1,10 +1,12 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcOtomasyon.Models.Entity; //entity klasorune ulas
+using PagedList;
+using PagedList.Mvc;
+
 
 namespace MvcOtomasyon.Controllers
 {
@@ -13,10 +15,11 @@ namespace MvcOtomasyon.Controllers
         // GET: Kategori
         //modeli tanit
         otomasyonEntities db = new otomasyonEntities(); //turettigim nesne modelimi tutuyor(tablolar)
-        public ActionResult Index()
+        public ActionResult Index(string ara, int sayfa = 1) //sayfanin ilk degeri 1 
         {
-            var kategoriler = db.KATEGORILER.ToList();
-            return View(kategoriler);
+            var kateg = db.KATEGORILER.Where(x => x.KATEGORIAD.Contains(ara) || string.IsNullOrEmpty(ara)).ToList().ToPagedList(sayfa, 6);
+
+            return View("Index", kateg);
         }
 
         [HttpGet]

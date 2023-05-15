@@ -88,3 +88,7 @@ C:\Users\binnu_1gf9mgq\OneDrive\Masaüstü\projeler\MvcOtomasyon\obj\Debug\MvcOt
 C:\Users\binnu_1gf9mgq\OneDrive\Masaüstü\projeler\MvcOtomasyon\obj\Debug\MvcOtomasyon.csproj.CopyComplete
 C:\Users\binnu_1gf9mgq\OneDrive\Masaüstü\projeler\MvcOtomasyon\obj\Debug\MvcOtomasyon.dll
 C:\Users\binnu_1gf9mgq\OneDrive\Masaüstü\projeler\MvcOtomasyon\obj\Debug\MvcOtomasyon.pdb
+C:\Users\binnu_1gf9mgq\OneDrive\Masaüstü\projeler\MvcOtomasyon\bin\PagedList.dll
+C:\Users\binnu_1gf9mgq\OneDrive\Masaüstü\projeler\MvcOtomasyon\bin\PagedList.Mvc.dll
+C:\Users\binnu_1gf9mgq\OneDrive\Masaüstü\projeler\MvcOtomasyon\bin\PagedList.xml
+C:\Users\binnu_1gf9mgq\OneDrive\Masaüstü\projeler\MvcOtomasyon\bin\PagedList.Mvc.xml

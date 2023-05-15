@@ -1,33 +1,38 @@
 ﻿@using MvcOtomasyon.Models.Entity
-@model List<URUNLER>
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<URUNLER>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
 
-<div class="container">
-    <table>
-        <thead>
-            <tr>
-                <th>ÜRÜN ID</th>
-                <th>ÜRÜN KATEGORİ</th>
-                <th>ÜRÜN MARKA</th>
-                <th>ÜRÜN MODEL</th>
-                <th>ÜRÜN AÇIKLAMA</th>
-                <th>ÜRÜN FİYAT</th>
-                <th>ÜRÜN STOK</th>
-                <th>SİL</th>
-                <th>GÜNCELLE</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var urn in Model)
-            {
+    <div class="container">
+        <table>
+            <thead>
                 <tr>
-                    <td>@urn.URUNID</td>
-                    <td>@if(urn.KATEGORILER != null) { @urn.KATEGORILER.KATEGORIAD }</td>
+                    <th>ÜRÜN ID</th>
+                    <th>ÜRÜN KATEGORİ</th>
+                    <th>ÜRÜN MARKA</th>
+                    <th>ÜRÜN MODEL</th>
+                    <th>ÜRÜN AÇIKLAMA</th>
+                    <th>ÜRÜN FİYAT</th>
+                    <th>ÜRÜN STOK</th>
+                    <th>SİL</th>
+                    <th>GÜNCELLE</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var urn in Model)
+                {
+                    <tr>
+                        <td>@urn.URUNID</td>
+                        <td>
+                            @if (urn.KATEGORILER != null)
+                            {@urn.KATEGORILER.KATEGORIAD}
+                    </td>
                     <td>@urn.URUNMARKA</td>
                     <td>@urn.URUNMODEL</td>
                     <td>@urn.URUNAD</td>
@@ -37,9 +42,12 @@
                     <td><a class="success" href="/URUN/UrunGetir/@urn.URUNID">GÜNCELLE</a></td>
                 </tr>
             }
-        </tbody>
-    </table>
-    <a href="/URUN/YeniUrun/" class="add-new">YENİ ÜRÜN EKLE</a>
-</div>
+            </tbody>
+        </table>
+        <div class="pagination">
+            @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+        </div>
+        <a href="/URUN/YeniUrun/" class="add-new">YENİ ÜRÜN EKLE</a>
+    </div>
 
 

@@ -4,16 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcOtomasyon.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcOtomasyon.Controllers
 {
     public class KampanyaController : Controller
     {
         // GET: Kampanya
-        otomasyonEntities db = new otomasyonEntities();
-        public ActionResult Index()
+        otomasyonEntities db = new otomasyonEntities(); //turettigim nesne modelimi tutuyor(tablolar)
+        public ActionResult Index(int sayfa=1) //sayfanin ilk degeri 1
         {
-            var kampanyalar = db.KAMPANYALAR.ToList();
+            var kampanyalar = db.KAMPANYALAR.ToList().ToPagedList(sayfa, 7);
             return View(kampanyalar);
         }
         [HttpGet]
@@ -21,7 +23,8 @@ namespace MvcOtomasyon.Controllers
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost] //forma bir gonderme post yaparsam yap //sayfa yuklendigi zaman yani post yapildigi zaman bu islemi gerceklestir
+        //kategori ekle
         public ActionResult YeniKampanya(KAMPANYALAR p1)
         {
             if (!ModelState.IsValid)

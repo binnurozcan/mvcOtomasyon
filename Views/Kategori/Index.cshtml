@@ -1,5 +1,8 @@
 ﻿@using MvcOtomasyon.Models.Entity
-@model List<KATEGORILER>
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<KATEGORILER>
+
 
 @{
     ViewBag.Title = "Index";
@@ -7,6 +10,13 @@
 }
 
     <div class="container">
+        @using (Html.BeginForm("Index", "Kategori", FormMethod.Get))
+        {
+            <p>
+                Aranacak Kategori: @Html.TextBox("ara")
+                <input type="submit" value="Ara" />
+            </p>
+        }
         <table>
             <thead>
                 <tr>
@@ -17,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var ktgr in Model)
+                @foreach (var ktgr in Model.ToList())
                 {
                     <tr>
                         <td>@ktgr.KATEGORIID</td>
@@ -30,6 +40,9 @@
         </table>
 
         <div>
+            <div class="pagination">
+                @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+            </div>
             <a href="/KATEGORI/YeniKategori/" class="success btn add-new">YENİ KATEGORİ EKLE</a>
         </div>
     </div>

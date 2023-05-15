@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcOtomasyon.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcOtomasyon.Controllers
 {
@@ -11,11 +13,11 @@ namespace MvcOtomasyon.Controllers
     {
         // GET: Musteri
         otomasyonEntities db = new otomasyonEntities();
-        public ActionResult Index()
+        public ActionResult Index(string ara, int sayfa = 1)
         {
-            var musteriler = db.MUSTERILER.ToList();
+            var musteriListesi = db.MUSTERILER.Where(x => x.MUSTERIAD.Contains(ara) || string.IsNullOrEmpty(ara)).ToList().ToPagedList(sayfa, 6);
 
-            return View(musteriler);
+            return View("Index", musteriListesi);
         }
         [HttpGet]
         public ActionResult YeniMusteri()

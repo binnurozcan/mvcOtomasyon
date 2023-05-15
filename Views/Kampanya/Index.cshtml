@@ -1,36 +1,42 @@
 ﻿@using MvcOtomasyon.Models.Entity
-@model List<KAMPANYALAR>
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<KAMPANYALAR>
 @{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<div class="container">
-    <table>
-        <thead>
-            <tr>
-                <th>Kampanya ID</th>
-                <th>Kampanya Ad</th>
-                <th>Kampanya İndirim Oranı</th>
-                <th>Kampanya Açıklaması</th>
-                <th>SİL</th>
-                <th>GÜNCELLE</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var kmp in Model)
-            {
+    <div class="container">
+        <table>
+            <thead>
                 <tr>
-                    <td>@kmp.KAMPANYAID</td>
-                    <td>@kmp.KAMPANYAADI</td>
-                    <td>@kmp.INDIRIMORANI</td>
-                    <td>@kmp.KAMPANYAACIKLAMA</td>
-                    <td><a class="danger" href="/KAMPANYA/SIL/@kmp.KAMPANYAID">SİL</a></td>
-                    <td><a class="success" href="/KAMPANYA/KampanyaGetir/@kmp.KAMPANYAID">GÜNCELLE</a></td>
+                    <th>Kampanya ID</th>
+                    <th>Kampanya Ad</th>
+                    <th>Kampanya İndirim Oranı</th>
+                    <th>Kampanya Açıklaması</th>
+                    <th>SİL</th>
+                    <th>GÜNCELLE</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-    <a href="/KAMPANYA/YeniKampanya/" class="add-new">YENİ KAMPANYA EKLE</a>
-</div>
+            </thead>
+            <tbody>
+                @foreach (var kmp in Model)
+                {
+                    <tr>
+                        <td>@kmp.KAMPANYAID</td>
+                        <td>@kmp.KAMPANYAADI</td>
+                        <td>@kmp.INDIRIMORANI</td>
+                        <td>@kmp.KAMPANYAACIKLAMA</td>
+                        <td><a class="danger" href="/KAMPANYA/SIL/@kmp.KAMPANYAID">SİL</a></td>
+                        <td><a class="success" href="/KAMPANYA/KampanyaGetir/@kmp.KAMPANYAID">GÜNCELLE</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="pagination">
+            @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+        </div>
+        
+            <a href="/KAMPANYA/YeniKampanya/" class="add-new">YENİ KAMPANYA EKLE</a>
+        </div>
 

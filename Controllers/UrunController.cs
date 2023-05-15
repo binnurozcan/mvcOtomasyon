@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 using MvcOtomasyon.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
+
 
 namespace MvcOtomasyon.Controllers
 {
@@ -13,10 +15,10 @@ namespace MvcOtomasyon.Controllers
     {
         // GET: Urun
         otomasyonEntities db = new otomasyonEntities();
-        public ActionResult Index()
+        public ActionResult Index(int sayfa = 1) //sayfanin ilk degeri 1
         {
-            var urunler = db.URUNLER.ToList();
-
+            //var urunler = db.URUNLER.ToList();
+            var urunler = db.URUNLER.ToList().ToPagedList(sayfa, 7);
             return View(urunler);
         }
         [HttpGet] // eğerki sayfa ilk yükleniyorsa, bir işlem yoksa sadece view'i geri döndür

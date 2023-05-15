@@ -1,5 +1,7 @@
 ﻿@using MvcOtomasyon.Models.Entity
-@model List <MUSTERILER>
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<MUSTERILER>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -8,6 +10,13 @@
 
 
 <div class="container">
+    @using (Html.BeginForm("Index", "Musteri", FormMethod.Get))
+    {
+        <p>
+            Aranacak Müşteri Adı: @Html.TextBox("ara")
+            <input type="submit" value="Ara" />
+        </p>
+    }
     <table>
         <thead>
             <tr>
@@ -20,18 +29,21 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var mus in Model)
+            @foreach (var mus in Model.ToList())
             {
-            <tr>
-                <td>@mus.MUSTERIID</td>
-                <td>@mus.MUSTERIAD</td>
-                <td>@mus.MUSTERISOYAD</td>
-                <td>@mus.MUSTERITELNO</td>
-                <td><a class="danger" href="/MUSTERI/SIL/@mus.MUSTERIID">SİL</a></td>
-                <td><a class="success" href="/MUSTERI/MusteriGetir/@mus.MUSTERIID">GÜNCELLE</a></td>
-            </tr>
+                <tr>
+                    <td>@mus.MUSTERIID</td>
+                    <td>@mus.MUSTERIAD</td>
+                    <td>@mus.MUSTERISOYAD</td>
+                    <td>@mus.MUSTERITELNO</td>
+                    <td><a class="danger" href="/MUSTERI/SIL/@mus.MUSTERIID">SİL</a></td>
+                    <td><a class="success" href="/MUSTERI/MusteriGetir/@mus.MUSTERIID">GÜNCELLE</a></td>
+                </tr>
             }
         </tbody>
     </table>
+    <div class="pagination">
+        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+    </div>
     <a href="/MUSTERI/YeniMusteri/" class="add-new">YENİ MÜŞTERİ EKLE</a>
 </div>
